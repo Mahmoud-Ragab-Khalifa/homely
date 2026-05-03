@@ -5,7 +5,7 @@ import Settings from "./Settings";
 
 const Header = () => {
   return (
-    <header className="py-5 shadow-md shadow-section z-50">
+    <header className="py-5 shadow-md shadow-section z-50 relative">
       <div className="container flex items-center justify-between gap-4">
         <Logo />
 
