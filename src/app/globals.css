@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --main-color: #fe595e;
 }
 
 @theme inline {
@@ -10,10 +11,60 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-main: var(--main-color);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+@layer base {
+  .container {
+    @apply mx-auto px-4 md:px-8 lg:px-16 xl:px-32;
+  }
+
+  .section-gap {
+    @apply my-8 md:my-16;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .card {
+    @apply p-5 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+}
+
+/* ANIMATIONS  */
+
+.animate-fade-in-lg {
+  animation: fade-in 0.8s ease-out both;
+}
+
+.animate-fade-in-md {
+  animation: fade-in 0.5s ease-out both;
+}
+
+.animate-fade-in-sm {
+  animation: fade-in 0.3s ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
