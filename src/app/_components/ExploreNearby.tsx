@@ -1,3 +1,4 @@
+import MainHeading from "@/components/MainHeading";
 import { exploreNearby } from "@/types/exploreNearby";
 import { Heart } from "lucide-react";
 import Image from "next/image";
@@ -63,9 +64,7 @@ const ExploreNearby = () => {
   return (
     <section className="section-gap" id="explore-nearby">
       <div className="container">
-        <h2 className="text-2xl md:text-3xl xl:text-4xl font-semibold mb-6 md:mb-8 xl:mb-10 text-shadow-md text-shadow-neutral-500 drop-shadow-md">
-          Explore Nearby
-        </h2>
+        <MainHeading title="Explore Nearby" />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {exploreData.map((item: exploreNearby) => (
