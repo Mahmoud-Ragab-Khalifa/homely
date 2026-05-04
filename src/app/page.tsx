@@ -1,5 +1,6 @@
 import ExploreNearby from "./_components/ExploreNearby";
 import Hero from "./_components/Hero";
+import LiveAnywhere from "./_components/LiveAnywhere";
 
 const HomePage = () => {
   return (
@@ -7,6 +8,8 @@ const HomePage = () => {
       <Hero />
 
       <ExploreNearby />
+
+      <LiveAnywhere />
     </main>
   );
 };
