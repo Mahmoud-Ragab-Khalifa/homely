@@ -27,7 +27,7 @@ const Hero = () => {
       </div>
 
       <a
-        href="#"
+        href="#explore-nearby"
         className="absolute z-50 animate-bounce bottom-5 left-1/2 -translate-1/2"
       >
         <ChevronsDown
