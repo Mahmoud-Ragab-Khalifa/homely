@@ -43,8 +43,8 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="container grid grid-cols-2 md:grid-cols-4 gap-y-10 py-10 md:py-14 bg-section">
+    <footer className="py-10 md:py-14 bg-section">
+      <div className="container grid grid-cols-2 md:grid-cols-4 gap-y-10">
         {links.map((link) => (
           <div key={link.title} className="space-y-4">
             <h5 className="font-bold text-gray-800 text-sm">{link.title}</h5>
