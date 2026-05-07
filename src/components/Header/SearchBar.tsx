@@ -2,7 +2,7 @@
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { SearchIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
 
 import "react-date-range/dist/styles.css"; // main style file
@@ -27,6 +27,27 @@ const SearchBar = () => {
 
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  const dateRangePickerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!input) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        dateRangePickerRef.current &&
+        !dateRangePickerRef.current.contains(e.target as Node)
+      ) {
+        setInput("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [input]);
+
   return (
     <>
       <div className="relative max-w-md flex-1">
@@ -49,7 +70,10 @@ const SearchBar = () => {
       </div>
 
       {input && (
-        <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl top-full z-50">
+        <div
+          className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl top-full z-50"
+          ref={dateRangePickerRef}
+        >
           <DateRangePicker
             ranges={[selectionRange]}
             onChange={handleSelect}
