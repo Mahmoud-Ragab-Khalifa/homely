@@ -1,7 +1,8 @@
 "use client";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, Users } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
 
@@ -48,6 +49,8 @@ const SearchBar = () => {
     };
   }, [input]);
 
+  const [numberOfGuests, setNumberOfGuests] = useState<number>(1);
+
   return (
     <div ref={dateRangePickerRef} className="flex-1 max-w-md">
       <div className="relative">
@@ -70,7 +73,7 @@ const SearchBar = () => {
       </div>
 
       {input && (
-        <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl top-full z-50">
+        <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl top-full z-50 bg-white">
           <DateRangePicker
             ranges={[selectionRange]}
             onChange={handleSelect}
@@ -81,6 +84,43 @@ const SearchBar = () => {
             moveRangeOnFirstSelection={!isMobile}
             editableDateInputs={isMobile}
           />
+
+          <div className="flex items-center justify-between border-t border-section py-4 px-5">
+            <h2 className="font-semibold">Number Of Guests</h2>
+
+            <div className="rounded-full bg-section py-2 px-4 relative flex items-center gap-4">
+              <label htmlFor="numberOfGuests">
+                <Users />
+              </label>
+
+              <input
+                value={numberOfGuests}
+                onChange={(e) => setNumberOfGuests(+e.target.value)}
+                type="number"
+                name="numberOfGuests"
+                id="numberOfGuests"
+                min={1}
+                className="focus:outline-none max-w-10 text-main caret-main"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 py-4 px-5 border-t border-section text-white">
+            <button
+              onClick={() => setInput("")}
+              type="button"
+              className=" cursor-pointer py-2 px-8 md:px-12 xl:px-15 bg-secondary md:bg-secondary/80 transition-all duration-300 md:hover:bg-secondary md:active:scale-110 md:shadow-sm md:shadow-secondary md:hover:shadow-md rounded-full w-fit mx-auto"
+            >
+              Cancel
+            </button>
+
+            <Link
+              href={"/search"}
+              className="block py-2 px-8 md:px-12 xl:px-15 bg-main md:bg-main/80 transition-all duration-300 md:hover:bg-main md:active:scale-110 md:shadow-sm md:shadow-main md:hover:shadow-md rounded-full w-fit mx-auto"
+            >
+              Search
+            </Link>
+          </div>
         </div>
       )}
     </div>
