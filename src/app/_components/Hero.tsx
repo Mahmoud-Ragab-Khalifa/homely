@@ -13,7 +13,7 @@ const Hero = () => {
         priority={true}
       />
 
-      <div className="absolute z-50 top-1/2 left-1/2 -translate-1/2 text-center w-full">
+      <div className="absolute z-20 top-1/2 left-1/2 -translate-1/2 text-center w-full">
         <p className="text-xl font-medium md:text-3xl md:font-semibold mb-5 md:mb-6 italic text-white text-shadow-neutral-600 drop-shadow-lg text-shadow-lg">
           Not Sure Where To Go? Perfect.
         </p>
@@ -28,7 +28,7 @@ const Hero = () => {
 
       <a
         href="#explore-nearby"
-        className="absolute z-50 animate-bounce bottom-5 left-1/2 -translate-1/2"
+        className="absolute z-20 animate-bounce bottom-5 left-1/2 -translate-1/2"
       >
         <ChevronsDown
           className="text-[#d845a8] md:text-[#d845a8]/60 hover:text-[#d845a8] active:text-[#d845a8] w-9 h-9 md:w-12.5 md:h-12.5 transition-colors duration-300"
