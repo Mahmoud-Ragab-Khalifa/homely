@@ -49,8 +49,8 @@ const SearchBar = () => {
   }, [input]);
 
   return (
-    <>
-      <div className="relative max-w-md flex-1">
+    <div ref={dateRangePickerRef} className="flex-1 max-w-md">
+      <div className="relative">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -70,10 +70,7 @@ const SearchBar = () => {
       </div>
 
       {input && (
-        <div
-          className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl top-full z-50"
-          ref={dateRangePickerRef}
-        >
+        <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl top-full z-50">
           <DateRangePicker
             ranges={[selectionRange]}
             onChange={handleSelect}
@@ -86,7 +83,7 @@ const SearchBar = () => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 
