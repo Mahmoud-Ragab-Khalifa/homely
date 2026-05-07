@@ -1,5 +1,6 @@
 "use client";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
@@ -24,7 +25,7 @@ const SearchBar = () => {
     setEndDate(ranges.selection.endDate as Date);
   };
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <>
