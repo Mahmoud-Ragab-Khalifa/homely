@@ -152,6 +152,7 @@ const SearchPage = async ({
                         src={item.img}
                         alt={item.location}
                         fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
                         className="object-cover rounded-t-xl md:rounded-t-none md:rounded-tl-xl md:rounded-bl-xl ring ring-white"
                       />
                     </div>
