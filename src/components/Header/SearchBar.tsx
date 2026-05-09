@@ -1,8 +1,10 @@
 "use client";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { format } from "date-fns";
 import { SearchIcon, Users } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
 
@@ -10,6 +12,25 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 const SearchBar = () => {
+  const searchParams = useSearchParams();
+  const searchLocation = searchParams.get("location");
+  const searchStartDate = searchParams.get("startDate");
+  const searchEndDate = searchParams.get("endDate");
+  const searchNumberOfGuests = searchParams.get("numberOfGuests");
+
+  let formatedStartDate: string | undefined = undefined;
+  let formatedEndDate: string | undefined = undefined;
+  if (searchStartDate && searchEndDate) {
+    formatedStartDate = format(new Date(searchStartDate), "dd MMMM yy");
+    formatedEndDate = format(new Date(searchEndDate), "dd MMMM yy");
+  }
+
+  let placeholder = "Start Your Search...";
+
+  if (searchLocation) {
+    placeholder = `${searchLocation} | ${formatedStartDate} - ${formatedEndDate} | ${searchNumberOfGuests} guests`;
+  }
+
   const [input, setInput] = useState<string>("");
 
   const [startDate, setStartDate] = useState(new Date());
@@ -60,7 +81,7 @@ const SearchBar = () => {
           type="text"
           name="search"
           id="search"
-          placeholder="Start Your Search..."
+          placeholder={placeholder}
           className="py-2 px-4 w-full  rounded-full ring-2 ring-section focus:ring-4 caret-main placeholder:text-neutral-400 text-secondary block focus:outline-none transition-all duration-300"
         />
 
