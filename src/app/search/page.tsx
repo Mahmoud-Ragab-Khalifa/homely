@@ -1,6 +1,7 @@
 import { SearchResultItem } from "@/types/searchResultItem";
 import { format } from "date-fns";
 import SearchResultCard from "./_components/SearchResultCard";
+import FinalMap from "./_components/FinalMap";
 
 const filters = [
   "Cancellation Flexibility",
@@ -121,7 +122,7 @@ const SearchPage = async ({
     <main>
       <section className="section-gap">
         <div className="container grid grid-cols-1 gap-5 lg:grid-cols-2">
-          <div className="List">
+          <div>
             <p className="text-xs text-secondary font-medium truncate">
               {info}
             </p>
@@ -149,7 +150,9 @@ const SearchPage = async ({
             </div>
           </div>
 
-          <div className="bg-red-400">Map</div>
+          <div className="bg-section w-full h-100 md:w-auto md:h-auto">
+            <FinalMap items={searchResults} />
+          </div>
         </div>
       </section>
     </main>
