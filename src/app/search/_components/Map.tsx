@@ -1,9 +1,7 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
 import "leaflet/dist/leaflet.css";
-
 import L from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MapPin } from "lucide-react";
@@ -13,15 +11,15 @@ import { getCenter } from "geolib";
 const customIcon = L.divIcon({
   html: renderToStaticMarkup(
     <div className="flex items-center justify-center">
-      <MapPin size={30} className="fill-main text-main" />
+      <MapPin size={25} className="fill-main text-main animate-bounce" />
     </div>,
   ),
   className: "",
-  iconSize: [30, 30],
+  iconSize: [25, 25],
   iconAnchor: [20, 40],
 });
 
-export default function FullMap({ items }: { items: SearchResultItem[] }) {
+const Map = ({ items }: { items: SearchResultItem[] }) => {
   const coordinates = items.map((item) => ({
     longitude: item.long,
     latitude: item.lat,
@@ -53,4 +51,6 @@ export default function FullMap({ items }: { items: SearchResultItem[] }) {
       ))}
     </MapContainer>
   );
-}
+};
+
+export default Map;
