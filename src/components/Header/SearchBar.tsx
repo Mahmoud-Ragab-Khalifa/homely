@@ -115,7 +115,10 @@ const SearchBar = () => {
             </button>
 
             <Link
-              href={"/search"}
+              href={{
+                pathname: "/search",
+                search: `?location=${input.trim()}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&numberOfGuests=${numberOfGuests}`,
+              }}
               onClick={() => setInput("")}
               className="block py-2 px-8 md:px-12 xl:px-15 bg-main md:bg-main/80 transition-all duration-300 md:hover:bg-main md:active:scale-110 md:shadow-sm md:shadow-main md:hover:shadow-md rounded-full w-fit mx-auto"
             >
