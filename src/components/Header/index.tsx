@@ -2,6 +2,7 @@ import { Menu } from "lucide-react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Settings from "./Settings";
+import { Suspense } from "react";
 
 const Header = () => {
   return (
@@ -9,7 +10,9 @@ const Header = () => {
       <div className="container flex items-center justify-between gap-4">
         <Logo />
 
-        <SearchBar />
+        <Suspense fallback={null}>
+          <SearchBar />
+        </Suspense>
 
         <Settings />
 
