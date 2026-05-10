@@ -2,7 +2,7 @@ import { SearchResultItem } from "@/types/searchResultItem";
 import { format } from "date-fns";
 import SearchResultCard from "./_components/SearchResultCard";
 import FinalMap from "./_components/FinalMap";
-import { supabase } from "@/lib/supabase";
+import { getSearchResults } from "@/server/db/searchResults";
 
 const filters = [
   "Cancellation Flexibility",
@@ -22,13 +22,11 @@ const SearchPage = async ({
     numberOfGuests: string;
   }>;
 }) => {
-  const { data: searchResults } = await supabase
-    .from("search_results")
-    .select("*");
-
   const { location, startDate, endDate, numberOfGuests } = await searchParams;
 
   const info = `300+ Stays | ${format(new Date(startDate), "dd MMMM yy")} - ${format(new Date(endDate), "dd MMMM yy")} | For ${numberOfGuests} Guests in ${location[0].toUpperCase()}${location.slice(1)}`;
+
+  const searchResults = await getSearchResults();
 
   return (
     <main>
