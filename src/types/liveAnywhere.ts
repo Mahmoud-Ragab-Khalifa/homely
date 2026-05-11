@@ -1,5 +1,5 @@
-export type liveAnywhere = {
-  id: string;
+export type LiveAnywhereItem = {
+  id: number;
   img: string;
   title: string;
 };

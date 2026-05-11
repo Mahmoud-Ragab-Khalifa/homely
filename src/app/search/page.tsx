@@ -26,7 +26,7 @@ const SearchPage = async ({
 
   const info = `300+ Stays | ${format(new Date(startDate), "dd MMMM yy")} - ${format(new Date(endDate), "dd MMMM yy")} | For ${numberOfGuests} Guests in ${location[0].toUpperCase()}${location.slice(1)}`;
 
-  const searchResults = await getSearchResults();
+  const searchResults: SearchResultItem[] = await getSearchResults();
 
   return (
     <main>
@@ -54,14 +54,14 @@ const SearchPage = async ({
             </div>
 
             <div className="grid grid-cols-1 gap-4 mt-5">
-              {searchResults?.map((item: SearchResultItem) => (
+              {searchResults.map((item: SearchResultItem) => (
                 <SearchResultCard key={item.id} item={item} />
               ))}
             </div>
           </div>
 
           <div className="bg-section w-full h-100 md:w-auto md:h-auto">
-            <FinalMap items={searchResults || []} />
+            <FinalMap items={searchResults} />
           </div>
         </div>
       </section>

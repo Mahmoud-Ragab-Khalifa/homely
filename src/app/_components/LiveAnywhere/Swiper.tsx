@@ -1,13 +1,13 @@
 "use client";
 
-import { liveAnywhere } from "@/types/liveAnywhere";
+import { LiveAnywhereItem } from "@/types/liveAnywhere";
 import Image from "next/image";
 import { FreeMode } from "swiper/modules";
 import { Swiper as SwiperComponent, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-const Swiper = ({ liveData }: { liveData: liveAnywhere[] }) => {
+const Swiper = ({ liveData }: { liveData: LiveAnywhereItem[] }) => {
   return (
     <SwiperComponent
       slidesPerView={"auto"}
@@ -21,7 +21,7 @@ const Swiper = ({ liveData }: { liveData: liveAnywhere[] }) => {
       }}
       modules={[FreeMode]}
     >
-      {liveData.map((item: liveAnywhere) => (
+      {liveData.map((item: LiveAnywhereItem) => (
         <SwiperSlide key={item.id} className="w-60! md:w-80!">
           <div className="relative aspect-square w-full overflow-hidden rounded-xl cursor-pointer group">
             <Image
