@@ -1,8 +1,8 @@
-import { exploreNearby } from "@/types/exploreNearby";
+import { ExploreNearbyItem } from "@/types/exploreNearby";
 import { Heart } from "lucide-react";
 import Image from "next/image";
 
-const ExploreNearbyCard = ({ item }: { item: exploreNearby }) => {
+const ExploreNearbyCard = ({ item }: { item: ExploreNearbyItem }) => {
   return (
     <div>
       <div className="relative aspect-square w-full overflow-hidden rounded-xl cursor-pointer group">

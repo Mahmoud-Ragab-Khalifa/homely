@@ -1,5 +1,5 @@
-export type exploreNearby = {
-  id: string;
+export type ExploreNearbyItem = {
+  id: number;
   img: string;
   location: string;
   distance: string;
