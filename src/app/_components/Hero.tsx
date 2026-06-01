@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="bg-section min-h-[calc(100vh-80px)] relative">
+    <section className="bg-section min-h-[calc(100dvh-80px)] relative">
       <Image
         src={"https://images.unsplash.com/photo-1505761671935-60b3a7427bad"}
         alt="Hero-Image"
